@@ -1,0 +1,59 @@
+name: "{{ name }}"
+title: "{{ title }}"
+description: "{{ description }}"
+version: "1.0.0"
+datapackage_version: "1.0.0"
+gemeindescan_version: "0.3.1"
+gemeindescan_meta:
+    topic: ""
+    permission: "NOT_LISTED"
+    is_showcase: {{ is_showcase }} 
+    bfs_number: 1051
+format: "geojson"
+license: "ODC-By-1.0"
+licenses:
+    - 
+        url: "https://opendatacommons.org/licenses/by/1.0/"
+        type: "ODC-By-1.0"
+keywords: 
+    {% for key in keywords %}
+    - "{{ key }}"
+    {% endfor%}
+views:
+    - 
+        name: "mapview"
+        specType: "gemeindescanSnapshot"
+        spec:
+            title: "{{ title }}"
+            description: "{{ description }}"
+            attribution: ""
+            bounds: {{ bounds_to_have }} 
+            legend: {{ legend }}
+        resources: ["data-layer", "mapbox-background"]
+sources:
+    -
+        url: "https://www.openstreetmap.org/copyright"
+        title: "Karte: Mapbox, © OpenStreetMap"
+resources:
+    - 
+        name: "data-layer"
+        mediatype: "application/vnd.simplestyle-extended"
+        data:
+            name: "data"
+            type: "FeatureCollection"
+            features: {{ VALID_STYLED_GEOJSON }}
+    -
+        name: "mapbox-background"
+        path: "mapbox://styles/gemeindescan/ck6rp249516tg1iqkmt48o4pz"
+        mediatype: "application/vnd.mapbox-vector-tile"
+        data: 
+maintainers:
+    -
+       web:  "{{ maintainers_web_github }}"
+       name: "{{ maintainers_name }}"
+contributors:
+    -
+        web: "https://cividi.ch"
+        role: "publisher"
+        email: "info@cividi.ch"
+        title: "cividi"

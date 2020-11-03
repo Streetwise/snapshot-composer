@@ -1,0 +1,10 @@
+# INPUT file 
+name: "Streetwise"
+title: "Zurich safety scores"
+description: "Safety score produce by NN accorindg photos from mapillary. The map  represents perpecption of urban space. Red point presents unsafety spots and green points safety spots"
+is_showcase: "false"
+keywords: ["Streetwise", "Zurich","Safety", "Urban" ]
+bounds_to_have: ["geo:47.310897, 8.458443", "geo:47.446897, 8.638687"]
+maintainers_web_github: "www.github.com/bkarolina"
+maintainers_name: "Karolina Bzdusek" 
+legend: [{'label': 'very dangerous', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'dangerous', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'neutral', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'very safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
