@@ -11,9 +11,9 @@ locations:
   - name: zurich
     geodata: test.json
     bounds_to_have: ["geo:47.310897, 8.458443", "geo:47.446897, 8.638687"]
-  - name: lausanne
-    geodata: test.json
-    bounds_to_have: ["geo:47.310897, 8.458443", "geo:47.446897, 8.638687"]
-  - name: bern
-    geodata: test.json
-    bounds_to_have: ["geo:47.310897, 8.458443", "geo:47.446897, 8.638687"]
+  - name: stgallen
+    geodata: stgallen_test.json
+    bounds_to_have: ["geo:47.453166, 9.310398", "geo:9.459572, 47.391842"]
+  - name: schaffhausen
+    geodata: schaffhausen_test.json
+    bounds_to_have: ["geo:47.719001, 8.593025", "geo:47.666312, 8.696709"]
