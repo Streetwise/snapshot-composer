@@ -1,6 +1,6 @@
-data/DATAPACKAGE.geojson
-data/custom_dict.txt
-data/data.geojson
-data/datapackage.json
-data/datapackage.yaml
+/output/*
+/data/*
+/template/output/*
 
+!data/test.json
+!output/README
