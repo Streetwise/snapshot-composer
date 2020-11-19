@@ -10,11 +10,10 @@ legend: [{'label': 'very dangerous', 'size': 3.0, 'shape': 'circle', 'primary': 
 locations:
   - name: zurich
     geodata: zurich_test.geojson
-    bounds_to_have: ["geo:47.310897, 8.458443", "geo:47.446897, 8.638687"]
   - name: zurich redux
     geodata: zurich_test.geojson
-    reduce_density: True
-    bounds_to_have: ["geo:47.310897, 8.458443", "geo:47.446897, 8.638687"]
+    bounds: ["geo:45.15, 5.967", "geo:52.883, 12.467"]
+    reduce_density: 2
   # - name: stgallen
   #   geodata: stgallen_test.geojson
   #   bounds_to_have: ["geo:47.453166, 9.310398", "geo:9.459572, 47.391842"]
@@ -23,4 +22,4 @@ locations:
   #   bounds_to_have: ["geo:47.719001, 8.593025", "geo:47.666312, 8.696709"]
   # - name: romanshorn
   #   geodata: romanshorn_test.geojson
-  #   bounds_to_have: ["geo:47.719001, 8.593025", "geo:47.666312, 8.696709"]
+  #   bounds_to_have: ["geo:47.310897, 8.458443", "geo:47.446897, 8.638687"]

@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 
 from util import legend_reader, translate, getting_dictionary
-from geoutil import points_reduce
+from geoutil import points_reduce, bounds_to_set
 
 def generateDataPackage(output_from_parsed_template, config):
   name = config['name']
@@ -42,16 +42,26 @@ def generateDataPackage(output_from_parsed_template, config):
   # Optimization steps
   #########
 
-  if 'reduce_density' in config and config['reduce_density']:
+  if 'reduce_density' in config:
+    if not isinstance(config['reduce_density'], int):
+      print("Setting density reduction to 2")
+      config['reduce_density'] = 2
     # Optimizes the GeoJSON, returns a new (temporary) filename
-    geodata = points_reduce(geodata)
+    geodata = points_reduce(geodata, config['reduce_density'])
 
   #########
   # Preprocessing, creating categories according to the score
   ########
 
+  # Read and optionally apply bounding box
+  if 'bounds' in config:
+    bbox = bounds_to_set(config['bounds'])
+    print('Applying boundary', bbox)
+    gdf = gpd.read_file(geodata, bbox=bbox)
+  else:
+    gdf = gpd.read_file(geodata)
+
   # If there are values out of the interval <0,50> transform them
-  gdf = gpd.read_file(geodata)
   gdf ['score'].mask(gdf ['score'] < 0, 0, inplace=True)
   gdf ['score'].mask(gdf ['score'] > 50, 50, inplace=True)
 
