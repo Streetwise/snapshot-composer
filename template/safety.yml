@@ -1,19 +1,26 @@
 # INPUT file
-name: "Streetwise"
+name: "Streetwise: Safety"
 title: "Safety scores"
-description: "Safety score produce by NN accorindg photos from mapillary. The map  represents perpecption of urban space. Red point presents unsafety spots and green points safety spots"
+description: "Score based on crowdsourced imagery from Mapillary and results of the Streetwise campaigns, relativising visual perception of urban spaces"
 is_showcase: "false"
 keywords: ["Streetwise", "Safety", "Urban" ]
-maintainers_web_github: "www.github.com/bkarolina"
-maintainers_name: "Karolina Bzdusek"
+maintainers_web_github: "https://github.com/streetwise"
+maintainers_name: "Streetwise team"
 legend: [{'label': 'very dangerous', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'dangerous', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'neutral', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'very safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
 locations:
   - name: zurich
-    geodata: test.json
+    geodata: zurich_test.geojson
     bounds_to_have: ["geo:47.310897, 8.458443", "geo:47.446897, 8.638687"]
-  - name: stgallen
-    geodata: stgallen_test.json
-    bounds_to_have: ["geo:47.453166, 9.310398", "geo:9.459572, 47.391842"]
-  - name: schaffhausen
-    geodata: schaffhausen_test.json
-    bounds_to_have: ["geo:47.719001, 8.593025", "geo:47.666312, 8.696709"]
+  - name: zurich redux
+    geodata: zurich_test.geojson
+    reduce_density: True
+    bounds_to_have: ["geo:47.310897, 8.458443", "geo:47.446897, 8.638687"]
+  # - name: stgallen
+  #   geodata: stgallen_test.geojson
+  #   bounds_to_have: ["geo:47.453166, 9.310398", "geo:9.459572, 47.391842"]
+  # - name: schaffhausen
+  #   geodata: schaffhausen_test.geojson
+  #   bounds_to_have: ["geo:47.719001, 8.593025", "geo:47.666312, 8.696709"]
+  # - name: romanshorn
+  #   geodata: romanshorn_test.geojson
+  #   bounds_to_have: ["geo:47.719001, 8.593025", "geo:47.666312, 8.696709"]

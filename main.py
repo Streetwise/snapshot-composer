@@ -28,8 +28,9 @@ output_from_parsed_template=(template.render(config_data))
 for location in config_data['locations']:
     name = location['name']
     filename = location['geodata']
+    print("Processing location %s from %s" % (name, filename))
     try:
         os.mkdir('output/%s' % name)
     except FileExistsError:
         pass
-    generateDataPackage(output_from_parsed_template, name, filename)
+    generateDataPackage(output_from_parsed_template, location)

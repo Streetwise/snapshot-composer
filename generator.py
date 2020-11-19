@@ -1,14 +1,17 @@
 ##########
 import json, ast, yaml
+
 import geopandas as gpd
 import pandas as pd
 import numpy as np
 
-from jinja2 import Environment, FileSystemLoader
+from util import legend_reader, translate, getting_dictionary
+from geoutil import points_reduce
 
-from util import *
+def generateDataPackage(output_from_parsed_template, config):
+  name = config['name']
+  geodata = 'data/%s' % config['geodata']
 
-def generateDataPackage(output_from_parsed_template, name, geodata='test.json'):
   with open('output/%s/datapackage.yaml' % name, "w") as fh:
       fh.write(output_from_parsed_template)
 
@@ -36,11 +39,19 @@ def generateDataPackage(output_from_parsed_template, name, geodata='test.json'):
     custom.write(str(custom_dict))
 
   #########
-  # Preporcessing, creating categories according to the score
+  # Optimization steps
+  #########
+
+  if 'reduce_density' in config and config['reduce_density']:
+    # Optimizes the GeoJSON, returns a new (temporary) filename
+    geodata = points_reduce(geodata)
+
+  #########
+  # Preprocessing, creating categories according to the score
   ########
 
   # If there are values out of the interval <0,50> transform them
-  gdf = gpd.read_file('data/%s' % geodata)
+  gdf = gpd.read_file(geodata)
   gdf ['score'].mask(gdf ['score'] < 0, 0, inplace=True)
   gdf ['score'].mask(gdf ['score'] > 50, 50, inplace=True)
 

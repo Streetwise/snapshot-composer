@@ -1,8 +1,19 @@
-##### Snapshots builder for gemeindescan
+##### Streetwise snapshots builder for Gemeindescan
 
-The snapshots builder is intended to be modified according to the needs. 
+The file "test.json" is sample of input geodata with some attributes (here is one attribute named "score").
 
-The file "test.json" is sample of input geodata with soem attributes (here is one attribute named "score"). 
+The file input YAML file (.yml) needs to be filled, regarding metadata information and style.
 
-The file "data_to_feed.yml" needs to be fill, regarding metadata information and style. 
+To use the builder, install the environment:
 
+```
+pyvenv .env
+. .env/bin/activate
+pip install -r requirements.txt
+```
+
+And run the main script, providing the filename of the input:
+
+```
+$ python main.py template/safety.yml
+```
