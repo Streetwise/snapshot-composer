@@ -97,15 +97,15 @@ def generateDataPackage(output_from_parsed_template, config):
     vals = [l[k] for l in d]
     gdf[k] = np.select(masks, vals, default=np.nan)
 
-  gdf.to_file("output/temp.data.geojson", driver='GeoJSON')
+  gdf.to_file("output/%s/preview.geojson" % name, driver='GeoJSON')
 
   #####
 
   # Export engine, creates datapackage
 
   with open("output/temp.datapackage.json", 'r') as j, \
-       open("output/temp.data.geojson", 'r') as l, \
-       open("output/%s/datapackage.geojson" % name, 'w') as r:
+       open("output/%s/preview.geojson" % name, 'r') as l, \
+       open("output/%s/datapackage.json" % name, 'w') as r:
      data = json.load(j)
      feed = json.load(l)
      data['resources'][0]['data']['features'] = feed['features']
