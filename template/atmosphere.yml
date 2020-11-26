@@ -1,0 +1,12 @@
+# INPUT file
+name: "Streetwise: Atmosphere"
+title: "Atmosphere scores"
+description: "Score based on crowdsourced imagery from Mapillary and results of the Streetwise campaigns, relativising visual perception of urban spaces"
+is_showcase: "false"
+keywords: ["Streetwise", "Atmosphere", "Urban" ]
+maintainers_web_github: "https://github.com/streetwise"
+maintainers_name: "Streetwise team"
+legend: [{'label': 'Least atmospheric', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Less attractive', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Neutral', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'More attractive', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Most atmospheric', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
+locations:
+  - name: Atmosphere Frauenfeld
+    geodata: atmosphere/frauenfeld_tesselated_0.001.json
