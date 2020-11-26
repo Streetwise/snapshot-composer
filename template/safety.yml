@@ -6,13 +6,14 @@ is_showcase: "false"
 keywords: ["Streetwise", "Safety", "Urban" ]
 maintainers_web_github: "https://github.com/streetwise"
 maintainers_name: "Streetwise team"
-legend: [{'label': 'Most unsafe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Unsafe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Neutral', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Very safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
+legend: [{'label': 'Least safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Less safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'More safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Safest', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
 locations:
   - name: zurich
     geodata: zurich_test.geojson
   - name: zurich redux
     geodata: zurich_test.geojson
     bounds: ["geo:45.15, 5.967", "geo:52.883, 12.467"]
+    viewport: ["geo:44.15, 4.967", "geo:53.883, 13.467"]
     reduce_density: 2
   # - name: stgallen
   #   geodata: stgallen_test.geojson

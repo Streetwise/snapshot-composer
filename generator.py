@@ -54,9 +54,10 @@ def generateDataPackage(output_from_parsed_template, config):
   ########
 
   # Read and optionally apply bounding box
+  bbox = None
   if 'bounds' in config:
     bbox = bounds_to_set(config['bounds'])
-    print('Applying boundary', bbox)
+    print('Cropping data to bounds', bbox)
     gdf = gpd.read_file(geodata, bbox=bbox)
   else:
     gdf = gpd.read_file(geodata)
@@ -78,7 +79,8 @@ def generateDataPackage(output_from_parsed_template, config):
     ]
   # create a list of the values we want to assign for each condition
   #values = ['0', '1', '2', '3', '4']
-  values = ['vey dangerous', 'dangerous', 'neutral', 'safe', 'very safe']
+  ## TODO: configured from legend
+  values = ['least safe', 'less safe', 'safe', 'more safe', 'safest']
 
   gdf['category'] =  np.select(conditions, values)
 
@@ -99,15 +101,28 @@ def generateDataPackage(output_from_parsed_template, config):
 
   gdf.to_file("output/%s/preview.geojson" % name, driver='GeoJSON')
 
+  ### Boundary settings
+
+  # Configure viewport
+  if 'viewport' in config and config['viewport']:
+    bbox = bounds_to_set(config['viewport'])
+    print('Using preset viewport')
+
+  # Calculate viewport
+  if bbox is None:
+    minx, miny, maxx, maxy = gdf.geometry.total_bounds
+    bbox = [minx, miny, maxx, maxy]
+    print('Calculated geometry bounds', bbox)
+
   #####
 
   # Export engine, creates datapackage
-
   with open("output/temp.datapackage.json", 'r') as j, \
        open("output/%s/preview.geojson" % name, 'r') as l, \
        open("output/%s/datapackage.json" % name, 'w') as r:
      data = json.load(j)
      feed = json.load(l)
+     data['views'][0]['spec']['bounds'] = bbox
      data['resources'][0]['data']['features'] = feed['features']
      # data['views'][0]['spec']['legend'] = klop
      json.dump(data, r)
