@@ -8,13 +8,19 @@ maintainers_web_github: "https://github.com/streetwise"
 maintainers_name: "Streetwise team"
 legend: [{'label': 'Least safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Less safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'More safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Safest', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
 locations:
-  - name: zurich
+  - name: test zurich viewport
     geodata: zurich_test.geojson
     viewport: ["geo:8.5481,47.3719", "geo:8.5900,47.4068"]
-  - name: zurich redux
+  - name: test zurich bounds
     geodata: zurich_test.geojson
     bounds: ["geo:8.5681,47.3519", "geo:8.5800,47.3968"]
     reduce_density: 2
+  - name: Safety Beromünster
+    geodata: beromuenster.json
+  - name: Safety Frauenfeld
+    geodata: frauenfeld.json
+  - name: Safety Rümlang
+    geodata: ruemlang.json
   # - name: stgallen
   #   geodata: stgallen_test.geojson
   #   viewport: ["geo:9.310398, 47.453166", "geo:9.459572, 47.391842"]
