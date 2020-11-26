@@ -10,17 +10,17 @@ legend: [{'label': 'Least safe', 'size': 3.0, 'shape': 'circle', 'primary': fals
 locations:
   - name: zurich
     geodata: zurich_test.geojson
+    viewport: ["geo:8.5481,47.3719", "geo:8.5900,47.4068"]
   - name: zurich redux
     geodata: zurich_test.geojson
-    bounds: ["geo:45.15, 5.967", "geo:52.883, 12.467"]
-    viewport: ["geo:44.15, 4.967", "geo:53.883, 13.467"]
+    bounds: ["geo:8.5681,47.3519", "geo:8.5800,47.3968"]
     reduce_density: 2
   # - name: stgallen
   #   geodata: stgallen_test.geojson
-  #   bounds_to_have: ["geo:47.453166, 9.310398", "geo:9.459572, 47.391842"]
+  #   viewport: ["geo:9.310398, 47.453166", "geo:9.459572, 47.391842"]
   # - name: schaffhausen
   #   geodata: schaffhausen_test.geojson
-  #   bounds_to_have: ["geo:47.719001, 8.593025", "geo:47.666312, 8.696709"]
+  #   viewport: ["geo:8.593025, 47.719001", "geo:8.696709, 47.666312"]
   # - name: romanshorn
   #   geodata: romanshorn_test.geojson
-  #   bounds_to_have: ["geo:47.310897, 8.458443", "geo:47.446897, 8.638687"]
+  #   viewport: ["geo:8.458443, 47.310897", "geo:8.638687, 47.446897"]

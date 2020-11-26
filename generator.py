@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 
 from util import legend_reader, translate, getting_dictionary
-from geoutil import points_reduce, bounds_to_set
+from geoutil import points_reduce, bounds_to_set, set_to_bounds
 
 def generateDataPackage(output_from_parsed_template, config):
   name = config['name']
@@ -113,6 +113,9 @@ def generateDataPackage(output_from_parsed_template, config):
     minx, miny, maxx, maxy = gdf.geometry.total_bounds
     bbox = [minx, miny, maxx, maxy]
     print('Calculated geometry bounds', bbox)
+
+  # Convert to geo: format
+  bbox = set_to_bounds(bbox)
 
   #####
 
