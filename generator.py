@@ -5,8 +5,8 @@ import geopandas as gpd
 import pandas as pd
 import numpy as np
 
-from util import legend_reader, translate, getting_dictionary
-from geoutil import points_reduce, bounds_to_set
+from util import legend_reader, translate_marker, getting_dictionary
+from geoutil import points_reduce, bounds_to_set, set_to_bounds
 
 def generateDataPackage(output_from_parsed_template, config):
   name = config['name']
@@ -31,7 +31,7 @@ def generateDataPackage(output_from_parsed_template, config):
   ##########
 
   default_dict = getting_dictionary('template/default_dict.txt')
-  custom_styles = translate(legend_reader('output/temp.datapackage.json'))
+  custom_styles = translate_marker(legend_reader('output/temp.datapackage.json'))
   custom_dict = []
   for i in range(len(custom_styles)):
     custom_dict.append({**default_dict[i], **custom_styles[i]})
@@ -54,9 +54,10 @@ def generateDataPackage(output_from_parsed_template, config):
   ########
 
   # Read and optionally apply bounding box
+  bbox = None
   if 'bounds' in config:
     bbox = bounds_to_set(config['bounds'])
-    print('Applying boundary', bbox)
+    print('Cropping data to bounds', bbox)
     gdf = gpd.read_file(geodata, bbox=bbox)
   else:
     gdf = gpd.read_file(geodata)
@@ -65,9 +66,7 @@ def generateDataPackage(output_from_parsed_template, config):
   gdf ['score'].mask(gdf ['score'] < 0, 0, inplace=True)
   gdf ['score'].mask(gdf ['score'] > 50, 50, inplace=True)
 
-  #conditions = [(gdf ['score'] == 0), (gdf ['score'] == 1),(gdf ['score'] == 2),(gdf ['score'] == 3),(gdf ['score'] == 4),(gdf ['score'] == 5),(gdf ['score'] == 6),(gdf ['score'] == 7),(gdf ['score'] == 8),(gdf ['score'] == 9),(gdf ['score'] == 10), (gdf ['score'] == 11),(gdf ['score'] == 12),(gdf ['score'] == 13),(gdf ['score'] == 14),(gdf ['score'] == 15),(gdf ['score'] == 16),(gdf ['score'] == 17),(gdf ['score'] == 18),(gdf ['score'] == 19),(gdf ['score'] == 20), (gdf ['score'] == 21),(gdf ['score'] == 22),(gdf ['score'] == 23),(gdf ['score'] == 24),(gdf ['score'] == 25),(gdf ['score'] == 26),(gdf ['score'] == 27),(gdf ['score'] == 28),(gdf ['score'] == 29),(gdf ['score'] == 30), (gdf ['score'] == 31),(gdf ['score'] == 32),(gdf ['score'] == 33),(gdf ['score'] == 34),(gdf ['score'] == 35),(gdf ['score'] == 36),(gdf ['score'] == 37),(gdf ['score'] == 38),(gdf ['score'] == 39),(gdf ['score'] == 40), (gdf ['score'] == 41),(gdf ['score'] == 42),(gdf ['score'] == 43),(gdf ['score'] == 44),(gdf ['score'] == 45),(gdf ['score'] == 46),(gdf ['score'] == 47),(gdf ['score'] == 48),(gdf ['score'] == 49)]
-  #values = [str(i) for i in range(50)]
-
+  gdf['title'] = ["score: %s" % gdf['score'][i] for i in range(len(gdf))] 
   # create a list of our conditions
   conditions = [
     (gdf ['score'] <= 9),
@@ -77,11 +76,9 @@ def generateDataPackage(output_from_parsed_template, config):
     (gdf ['score'] > 40)
     ]
   # create a list of the values we want to assign for each condition
-  #values = ['0', '1', '2', '3', '4']
-  values = ['vey dangerous', 'dangerous', 'neutral', 'safe', 'very safe']
-
-  gdf['category'] =  np.select(conditions, values)
-
+  values = ['Very dangerous', 'Dangerous', 'Neutral', 'Safe', 'Very safe']
+  gdf['category'] = np.select(conditions, values)
+  
   #########
   # Transformation of original json to create styled geojson
   ########
@@ -96,8 +93,26 @@ def generateDataPackage(output_from_parsed_template, config):
   for k in d[0].keys():
     vals = [l[k] for l in d]
     gdf[k] = np.select(masks, vals, default=np.nan)
-
+  
   gdf.to_file("output/%s/preview.geojson" % name, driver='GeoJSON')
+  #####
+
+  
+  ### Boundary settings
+
+  # Configure viewport
+  if 'viewport' in config and config['viewport']:
+    bbox = bounds_to_set(config['viewport'])
+    print('Using preset viewport')
+
+  # Calculate viewport
+  if bbox is None:
+    minx, miny, maxx, maxy = gdf.geometry.total_bounds
+    bbox = [minx, miny, maxx, maxy]
+    print('Calculated geometry bounds', bbox)
+
+  # Convert to geo: format
+  bbox = set_to_bounds(bbox)
 
   #####
 
@@ -109,5 +124,5 @@ def generateDataPackage(output_from_parsed_template, config):
      data = json.load(j)
      feed = json.load(l)
      data['resources'][0]['data']['features'] = feed['features']
-     # data['views'][0]['spec']['legend'] = klop
+     data['views'][0]['spec']['bounds'] = bbox
      json.dump(data, r)

@@ -17,14 +17,15 @@ def bounds_to_set(bounds):
   else:
     return set(bounds)
 
+def set_to_bounds(bounds):
+  if bounds is None: return []
+  print("setting", bounds)
+  return ['geo:%f,%f' % (bounds[1], bounds[0]), 'geo:%f,%f' % (bounds[3], bounds[2])]
+
 def points_reduce(filename, factor=2):
   data = gpd.read_file(filename)
   newgp = data.copy().iloc[::factor, :]
   newgp.reindex()
-  # print(data.head())
-  # print(newgp.head())
-  # print(len(data), len(newgp))
-  # newfile = tempfile.mkstemp('.geojson')[1]
   newfile = "output/temp.reduced.geojson"
   print('Writing 1/%d reduced data to' % factor, newfile)
   newgp.to_file(newfile, driver='GeoJSON')

@@ -1,6 +1,7 @@
 /output/*
 /data/*
 /template/output/*
+/streetwise/*
 
 !data/test.json
 !output/README

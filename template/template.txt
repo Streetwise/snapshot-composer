@@ -37,7 +37,7 @@ sources:
 resources:
     - 
         name: "data-layer"
-        mediatype: "application/vnd.simplestyle-extended"
+        mediatype: "application/geo+json"
         data:
             name: "data"
             type: "FeatureCollection"

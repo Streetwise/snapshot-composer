@@ -1,5 +1,6 @@
 ##### Streetwise snapshots builder for Gemeindescan
 
+
 The file "test.json" is sample of input geodata with some attributes (here is one attribute named "score").
 
 The file input YAML file (.yml) needs to be filled, regarding metadata information and style.
