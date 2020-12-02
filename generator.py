@@ -66,14 +66,15 @@ def generateDataPackage(output_from_parsed_template, config):
   gdf ['score'].mask(gdf ['score'] < 0, 0, inplace=True)
   gdf ['score'].mask(gdf ['score'] > 50, 50, inplace=True)
 
-  gdf['title'] = ["score: %s" % gdf['score'][i] for i in range(len(gdf))] 
+  gdf['title'] = ["score: %s" % gdf['score'][i] for i in range(len(gdf))]  
+
   # create a list of our conditions
   conditions = [
     (gdf ['score'] <= 9),
     (gdf ['score'] > 9) & (gdf ['score'] <= 19),
     (gdf ['score'] > 19) & (gdf ['score'] <= 29),
     (gdf ['score'] > 29) & (gdf ['score'] <= 39),
-    (gdf ['score'] > 40)
+    (gdf ['score'] >= 40)
     ]
   # create a list of the values we want to assign for each condition
   values = ['Very dangerous', 'Dangerous', 'Neutral', 'Safe', 'Very safe']
