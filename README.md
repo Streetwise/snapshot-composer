@@ -12,10 +12,17 @@ The script depends on [GDAL](https://gdal.org/) which you would best install usi
 
 pyproj may also be required, installable via `python3-pyproj`
 
-To use the builder, install the environment using pyvenv or Pipenv:
+To use the builder, install the environment with [Pipenv](https://pipenv.pypa.io/en/latest/):
 
 ```
-pyvenv .env
+pipenv --site-packages install
+pipenv shell
+```
+
+or using pyvenv:
+
+```
+pyvenv .env --system-site-packages
 . .env/bin/activate
 pip install -r requirements.txt
 ```
