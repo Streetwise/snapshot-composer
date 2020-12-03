@@ -77,9 +77,13 @@ def generateDataPackage(output_from_parsed_template, config):
     (gdf ['score'] >= 40)
     ]
   # create a list of the values we want to assign for each condition
-  values = ['Very dangerous', 'Dangerous', 'Neutral', 'Safe', 'Very safe']
-  gdf['category'] = np.select(conditions, values)
-  
+  #values = ['Very dangerous', 'Dangerous', 'Neutral', 'Safe', 'Very safe']
+  #values = ['0', '1', '2', '3', '4']
+  ## TODO: configured from legend
+  values = ['least safe', 'less safe', 'safe', 'more safe', 'safest']
+
+  gdf['category'] =  np.select(conditions, values)
+
   #########
   # Transformation of original json to create styled geojson
   ########
@@ -115,15 +119,31 @@ def generateDataPackage(output_from_parsed_template, config):
   # Convert to geo: format
   bbox = set_to_bounds(bbox)
 
+  ### Boundary settings
+
+  # Configure viewport
+  if 'viewport' in config and config['viewport']:
+    bbox = bounds_to_set(config['viewport'])
+    print('Using preset viewport')
+
+  # Calculate viewport
+  if bbox is None:
+    minx, miny, maxx, maxy = gdf.geometry.total_bounds
+    bbox = [minx, miny, maxx, maxy]
+    print('Calculated geometry bounds', bbox)
+
+  # Convert to geo: format
+  bbox = set_to_bounds(bbox)
+
   #####
 
   # Export engine, creates datapackage
-
   with open("output/temp.datapackage.json", 'r') as j, \
        open("output/%s/preview.geojson" % name, 'r') as l, \
        open("output/%s/datapackage.json" % name, 'w') as r:
      data = json.load(j)
      feed = json.load(l)
+     data['views'][0]['spec']['bounds'] = bbox
      data['resources'][0]['data']['features'] = feed['features']
      data['views'][0]['spec']['bounds'] = bbox
      json.dump(data, r)

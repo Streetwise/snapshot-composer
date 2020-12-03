@@ -9,10 +9,10 @@ def bounds_to_set(bounds):
     btl = bounds[0].strip('geo:').split(',')
     bbr = bounds[1].strip('geo:').split(',')
     return (
-      float(btl[1].strip()),
       float(btl[0].strip()),
-      float(bbr[1].strip()),
+      float(btl[1].strip()),
       float(bbr[0].strip()),
+      float(bbr[1].strip()),
     )
   else:
     return set(bounds)
