@@ -5,5 +5,7 @@
 streetwise
 __pycache__
 
+Pipfile.lock
+
 !data/test.json
 !output/README
