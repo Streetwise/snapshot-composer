@@ -3,5 +3,7 @@
 /template/output/*
 /streetwise/*
 
+__pycache__
+
 !data/test.json
 !output/README
