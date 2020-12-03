@@ -1,11 +1,18 @@
 ##### Streetwise snapshots builder for Gemeindescan
 
+This script prepares Data Packages for upload to Gemeindescan (as "Snapshots").
 
-The file "test.json" is sample of input geodata with some attributes (here is one attribute named "score").
+It expects a `data` folder with sources specified by a template in YAML.
 
 The file input YAML file (.yml) needs to be filled, regarding metadata information and style.
 
-To use the builder, install the environment:
+## Installation
+
+The script depends on [GDAL](https://gdal.org/) which you would best install using your system packager, e.g. `yum install gdal-devel`
+
+pyproj may also be required, installable via `python3-pyproj`
+
+To use the builder, install the environment using pyvenv or Pipenv:
 
 ```
 pyvenv .env
