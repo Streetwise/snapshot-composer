@@ -6,8 +6,58 @@ is_showcase: "false"
 keywords: ["Streetwise", "Safety", "Urban" ]
 maintainers_web_github: "https://github.com/streetwise"
 maintainers_name: "Streetwise team"
-legend: [{'label': 'Least safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Less safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'More safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Safest', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
+legend: [{'label': 'Very dangerous', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Dangerous', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Neutral', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Very safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
 locations:
+  - name: badzurzach
+    geodata: badzurzach.json
+    reduce_density: 10
+  - name: bergdierikon
+    geodata: bergdierikon.json
+    reduce_density: 10
+  - name: beringen
+    geodata: beringen.json
+    reduce_density: 1000
+  - name: beromuenster
+    geodata: beromuenster.json
+    reduce_density: 10
+  - name: ebikon
+    geodata: ebikon.json
+    reduce_density: 10
+  - name: ermatingen
+    geodata: ermatingen.json
+    reduce_density: 10
+  - name: frauenfeld
+    geodata: frauenfeld.json
+    reduce_density: 10
+  - name: ingenbohl 
+    geodata: ingenbohl.json
+    reduce_density: 10
+  - name: kloten
+    geodata: kloten.json
+    reduce_density: 10
+  - name: luzern
+    geodata: luzern.json
+    reduce_density: 10
+  - name: ruemlang
+    geodata: ruemlang.json
+    reduce_density: 10
+  - name: sursee
+    geodata: sursee.json
+    reduce_density: 10
+  - name: walchwil
+    geodata: walchwil.json
+    reduce_density: 10
+  - name: wattwil
+    geodata: wattwil.json
+    reduce_density: 10
+  - name: zug
+    geodata: zug.json
+    reduce_density: 10
+  - name: zurich
+    geodata: zurich.json
+    reduce_density: 1000
+legend2: [{'label': 'Least safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Less safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'More safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Safest', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
+locations2:
   - name: test zurich viewport
     geodata: zurich_test.geojson
     viewport: ["geo:8.5481,47.3719", "geo:8.5900,47.4068"]

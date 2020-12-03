@@ -26,10 +26,6 @@ def points_reduce(filename, factor=2):
   data = gpd.read_file(filename)
   newgp = data.copy().iloc[::factor, :]
   newgp.reindex()
-  # print(data.head())
-  # print(newgp.head())
-  # print(len(data), len(newgp))
-  # newfile = tempfile.mkstemp('.geojson')[1]
   newfile = "output/temp.reduced.geojson"
   print('Writing 1/%d reduced data to' % factor, newfile)
   newgp.to_file(newfile, driver='GeoJSON')

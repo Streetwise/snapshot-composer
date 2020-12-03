@@ -34,3 +34,6 @@ def generator(filename):
 
 if __name__ == '__main__':
     generator()
+
+# this needs to be done for every datapackage
+# sed 's/markercolor/marker-color/g' datapackage.json >> final.json

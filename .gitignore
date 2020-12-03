@@ -1,6 +1,9 @@
 /output/*
 /data/*
 /template/output/*
+/streetwise/*
+streetwise
+__pycache__
 
 !data/test.json
 !output/README
