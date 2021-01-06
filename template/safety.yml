@@ -9,74 +9,50 @@ maintainers_name: "Streetwise team"
 legend: [{'label': 'Very dangerous', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Dangerous', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Neutral', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Very safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
 locations:
   - name: badzurzach
-    geodata: badzurzach.json
+    geodata: safety_scores/badzurzach.json
     reduce_density: 10
   - name: bergdierikon
-    geodata: bergdierikon.json
+    geodata: safety_scores/bergdierikon.json
     reduce_density: 10
   - name: beringen
-    geodata: beringen.json
+    geodata: safety_scores/beringen.json
     reduce_density: 1000
   - name: beromuenster
-    geodata: beromuenster.json
+    geodata: safety_scores/beromuenster.json
     reduce_density: 10
   - name: ebikon
-    geodata: ebikon.json
+    geodata: safety_scores/ebikon.json
     reduce_density: 10
   - name: ermatingen
-    geodata: ermatingen.json
+    geodata: safety_scores/ermatingen.json
     reduce_density: 10
   - name: frauenfeld
-    geodata: frauenfeld.json
+    geodata: safety_scores/frauenfeld.json
     reduce_density: 10
-  - name: ingenbohl 
-    geodata: ingenbohl.json
+  - name: ingenbohl
+    geodata: safety_scores/ingenbohl.json
     reduce_density: 10
   - name: kloten
-    geodata: kloten.json
+    geodata: safety_scores/kloten.json
     reduce_density: 10
   - name: luzern
-    geodata: luzern.json
+    geodata: safety_scores/luzern.json
     reduce_density: 10
   - name: ruemlang
-    geodata: ruemlang.json
+    geodata: safety_scores/ruemlang.json
     reduce_density: 10
   - name: sursee
-    geodata: sursee.json
+    geodata: safety_scores/sursee.json
     reduce_density: 10
   - name: walchwil
-    geodata: walchwil.json
+    geodata: safety_scores/walchwil.json
     reduce_density: 10
   - name: wattwil
-    geodata: wattwil.json
+    geodata: safety_scores/wattwil.json
     reduce_density: 10
   - name: zug
-    geodata: zug.json
+    geodata: safety_scores/zug.json
     reduce_density: 10
   - name: zurich
-    geodata: zurich.json
+    geodata: safety_scores/zurich.json
     reduce_density: 1000
-legend2: [{'label': 'Least safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Less safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'More safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Safest', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
-locations2:
-  - name: test zurich viewport
-    geodata: zurich_test.geojson
-    viewport: ["geo:8.5481,47.3719", "geo:8.5900,47.4068"]
-  - name: test zurich bounds
-    geodata: zurich_test.geojson
-    bounds: ["geo:8.5681,47.3519", "geo:8.5800,47.3968"]
-    reduce_density: 2
-  - name: Safety Beromünster
-    geodata: beromuenster.json
-  - name: Safety Frauenfeld
-    geodata: frauenfeld.json
-  - name: Safety Rümlang
-    geodata: ruemlang.json
-  # - name: stgallen
-  #   geodata: stgallen_test.geojson
-  #   viewport: ["geo:9.310398, 47.453166", "geo:9.459572, 47.391842"]
-  # - name: schaffhausen
-  #   geodata: schaffhausen_test.geojson
-  #   viewport: ["geo:8.593025, 47.719001", "geo:8.696709, 47.666312"]
-  # - name: romanshorn
-  #   geodata: romanshorn_test.geojson
-  #   viewport: ["geo:8.458443, 47.310897", "geo:8.638687, 47.446897"]
