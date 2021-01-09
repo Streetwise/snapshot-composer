@@ -29,7 +29,7 @@ def generator(filename):
             os.mkdir('output/%s' % name)
         except FileExistsError:
             pass
-        generateDataPackage(output_from_parsed_template, location)
+        generateDataPackage(output_from_parsed_template, location, config_data)
 
 
 if __name__ == '__main__':

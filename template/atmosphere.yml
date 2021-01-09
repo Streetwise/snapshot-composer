@@ -1,12 +1,58 @@
 # INPUT file
 name: "Streetwise: Atmosphere"
-title: "Atmosphere scores"
-description: "Score based on crowdsourced imagery from Mapillary and results of the Streetwise campaigns, relativising visual perception of urban spaces"
+title: "Streetwise Score Atmosphäre"
+description: "Die Bewertung («Score») basiert auf Bilddaten aus Mapillary und der durch Crowdsourcing untersuchten visuellen Wahrnehmung öffentlicher Räume im Hinblick auf Sicherheit («wo fühlst du dich sicherer?»)."
 is_showcase: "false"
 keywords: ["Streetwise", "Atmosphere", "Urban" ]
 maintainers_web_github: "https://github.com/streetwise"
-maintainers_name: "Streetwise team"
-legend: [{'label': 'Least atmospheric', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Less attractive', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Neutral', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'More attractive', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Most atmospheric', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
+maintainers_name: "IVO / MKZ"
+legend: [{'label': 'Als unbeliebter Aufenthaltsort wahrgenommen', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': '', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': '', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': '', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Als beliebter Aufenthaltsort wahrgenommen', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
 locations:
-  - name: Atmosphere Frauenfeld
-    geodata: atmosphere/frauenfeld_tesselated_0.001.json
+  - name: badzurzach
+    geodata: atmos_scores/badzurzach.json
+    reduce_density: 10
+  - name: bergdierikon
+    geodata: atmos_scores/bergdierikon.json
+    reduce_density: 10
+  - name: beringen
+    geodata: atmos_scores/beringen.json
+    reduce_density: 1000
+  - name: beromuenster
+    geodata: atmos_scores/beromuenster.json
+    reduce_density: 10
+  - name: ebikon
+    geodata: atmos_scores/ebikon.json
+    reduce_density: 10
+  - name: ermatingen
+    geodata: atmos_scores/ermatingen.json
+    reduce_density: 10
+  - name: frauenfeld
+    geodata: atmos_scores/frauenfeld.json
+    reduce_density: 10
+  - name: ingenbohl
+    geodata: atmos_scores/ingenbohl.json
+    reduce_density: 10
+  - name: kloten
+    geodata: atmos_scores/kloten.json
+    reduce_density: 10
+  - name: luzern
+    geodata: atmos_scores/luzern.json
+    reduce_density: 10
+  - name: ruemlang
+    geodata: atmos_scores/ruemlang.json
+    reduce_density: 10
+  - name: sursee
+    geodata: atmos_scores/sursee.json
+    reduce_density: 10
+  - name: walchwil
+    geodata: atmos_scores/walchwil.json
+    reduce_density: 10
+  - name: wattwil
+    geodata: atmos_scores/wattwil.json
+    reduce_density: 10
+  - name: zug
+    geodata: atmos_scores/zug.json
+    reduce_density: 10
+  - name: zurich
+    geodata: atmos_scores/zurich.json
+    reduce_density: 1000

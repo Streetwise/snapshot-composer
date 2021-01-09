@@ -19,6 +19,8 @@ def bounds_to_set(bounds):
 
 def set_to_bounds(bounds):
   if bounds is None: return []
+  if len(bounds) == 2 and bounds[0].startswith('geo:'): return bounds
+  if len(bounds) < 4: raise Exception("Invalid bounds", bounds)
   print("setting", bounds)
   return ['geo:%f,%f' % (bounds[1], bounds[0]), 'geo:%f,%f' % (bounds[3], bounds[2])]
 

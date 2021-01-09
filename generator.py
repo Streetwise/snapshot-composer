@@ -8,9 +8,9 @@ import numpy as np
 from util import legend_reader, translate_marker, getting_dictionary
 from geoutil import points_reduce, bounds_to_set, set_to_bounds
 
-def generateDataPackage(output_from_parsed_template, config):
-  name = config['name']
-  geodata = 'data/%s' % config['geodata']
+def generateDataPackage(output_from_parsed_template, location, config_data):
+  name = location['name']
+  geodata = 'data/%s' % location['geodata']
 
   with open('output/%s/datapackage.yaml' % name, "w") as fh:
       fh.write(output_from_parsed_template)
@@ -42,12 +42,12 @@ def generateDataPackage(output_from_parsed_template, config):
   # Optimization steps
   #########
 
-  if 'reduce_density' in config:
-    if not isinstance(config['reduce_density'], int):
+  if 'reduce_density' in location:
+    if not isinstance(location['reduce_density'], int):
       print("Setting density reduction to 2")
-      config['reduce_density'] = 2
+      location['reduce_density'] = 2
     # Optimizes the GeoJSON, returns a new (temporary) filename
-    geodata = points_reduce(geodata, config['reduce_density'])
+    geodata = points_reduce(geodata, location['reduce_density'])
 
   #########
   # Preprocessing, creating categories according to the score
@@ -55,8 +55,8 @@ def generateDataPackage(output_from_parsed_template, config):
 
   # Read and optionally apply bounding box
   bbox = None
-  if 'bounds' in config:
-    bbox = bounds_to_set(config['bounds'])
+  if 'bounds' in location:
+    bbox = bounds_to_set(location['bounds'])
     print('Cropping data to bounds', bbox)
     gdf = gpd.read_file(geodata, bbox=bbox)
   else:
@@ -66,7 +66,7 @@ def generateDataPackage(output_from_parsed_template, config):
   gdf ['score'].mask(gdf ['score'] < 0, 0, inplace=True)
   gdf ['score'].mask(gdf ['score'] > 50, 50, inplace=True)
 
-  gdf['title'] = ["score: %s" % gdf['score'][i] for i in range(len(gdf))]  
+  gdf['title'] = ["score: %s" % gdf['score'][i] for i in range(len(gdf))]
 
   # create a list of our conditions
   conditions = [
@@ -76,12 +76,11 @@ def generateDataPackage(output_from_parsed_template, config):
     (gdf ['score'] > 29) & (gdf ['score'] <= 39),
     (gdf ['score'] >= 40)
     ]
-  # create a list of the values we want to assign for each condition
-  #values = ['Very dangerous', 'Dangerous', 'Neutral', 'Safe', 'Very safe']
-  #values = ['0', '1', '2', '3', '4']
-  ## TODO: configured from legend
-  values = ['least safe', 'less safe', 'safe', 'more safe', 'safest']
 
+  # list of the values we want to assign for each condition
+  values = [v['label'] for v in config_data['legend']]
+
+  # set the category frame based on conditions and values above
   gdf['category'] =  np.select(conditions, values)
 
   #########
@@ -98,16 +97,16 @@ def generateDataPackage(output_from_parsed_template, config):
   for k in d[0].keys():
     vals = [l[k] for l in d]
     gdf[k] = np.select(masks, vals, default=np.nan)
-  
+
   gdf.to_file("output/%s/preview.geojson" % name, driver='GeoJSON')
   #####
 
-  
+
   ### Boundary settings
 
-  # Configure viewport
-  if 'viewport' in config and config['viewport']:
-    bbox = bounds_to_set(config['viewport'])
+  # Check viewport settings
+  if 'viewport' in location and location['viewport']:
+    bbox = bounds_to_set(location['viewport'])
     print('Using preset viewport')
 
   # Calculate viewport
@@ -121,9 +120,9 @@ def generateDataPackage(output_from_parsed_template, config):
 
   ### Boundary settings
 
-  # Configure viewport
-  if 'viewport' in config and config['viewport']:
-    bbox = bounds_to_set(config['viewport'])
+  # Set final viewport
+  if 'viewport' in location and location['viewport']:
+    bbox = bounds_to_set(location['viewport'])
     print('Using preset viewport')
 
   # Calculate viewport
