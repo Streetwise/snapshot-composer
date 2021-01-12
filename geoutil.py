@@ -32,3 +32,9 @@ def points_reduce(filename, factor=2):
   print('Writing 1/%d reduced data to' % factor, newfile)
   newgp.to_file(newfile, driver='GeoJSON')
   return newfile
+
+def html_geo_thumb(imgkey):
+  return \
+    ("<a target=\"_blank\" href=\"https://www.mapillary.com/map/im/%s\">" + \
+    "<img src=\"https://images.mapillary.com/%s/" + \
+    "thumb-320.jpg\"></a>") % (imgkey, imgkey)

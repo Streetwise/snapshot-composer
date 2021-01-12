@@ -32,6 +32,9 @@ views:
         resources: ["data-layer", "mapbox-background"]
 sources:
     -
+        url: "https://streewise.space"
+        title: "Streetwise"
+    -
         url: "https://www.openstreetmap.org/copyright"
         title: "Karte: Mapbox, © OpenStreetMap"
 resources:
