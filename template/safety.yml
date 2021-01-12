@@ -11,8 +11,8 @@ locations:
   - name: badzurzach
     geodata: safety_scores/badzurzach.json
     reduce_density: 10
-  - name: bergdierikon
-    geodata: safety_scores/bergdierikon.json
+  - name: bergdietikon
+    geodata: safety_scores/bergdietikon.json
     reduce_density: 10
   - name: beringen
     geodata: safety_scores/beringen.json

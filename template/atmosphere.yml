@@ -11,8 +11,8 @@ locations:
   - name: badzurzach
     geodata: atmos_scores/badzurzach.json
     reduce_density: 10
-  - name: bergdierikon
-    geodata: atmos_scores/bergdierikon.json
+  - name: bergdietikon
+    geodata: atmos_scores/bergdietikon.json
     reduce_density: 10
   - name: beringen
     geodata: atmos_scores/beringen.json

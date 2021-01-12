@@ -33,7 +33,8 @@ def translate_marker(legend):
             if k == 'label':
                 custom_styles[idx]= (dict(label=v))
             elif k == 'fillColor':
-                custom_styles[idx].update(fill='true', fillColor=v, markercolor=v)
+                custom_styles[idx].update(fill='true', fillColor=v, scale=0.5)
+                custom_styles[idx]['marker-color'] = v
             elif k == 'fillOpacity':
                custom_styles[idx].update(fillOpacity=v)
             elif k == 'strokeColor':

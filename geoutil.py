@@ -36,5 +36,6 @@ def points_reduce(filename, factor=2):
 def html_geo_thumb(imgkey):
   return \
     ("<a target=\"_blank\" href=\"https://www.mapillary.com/map/im/%s\">" + \
-    "<img src=\"https://images.mapillary.com/%s/" + \
-    "thumb-320.jpg\"></a>") % (imgkey, imgkey)
+    "<img style=\"width:200px\" " + \
+    "src=\"https://images.mapillary.com/%s/thumb-320.jpg\"></a>") % \
+    (imgkey, imgkey)

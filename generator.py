@@ -63,41 +63,39 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
     gdf = gpd.read_file(geodata)
 
   # If there are values out of the interval <0,50> transform them
-  gdf ['score'].mask(gdf ['score'] < 0, 0, inplace=True)
-  gdf ['score'].mask(gdf ['score'] > 50, 50, inplace=True)
+  gdf['score'].mask(gdf['score'] < 0, 0, inplace=True)
+  gdf['score'].mask(gdf['score'] > 50, 50, inplace=True)
 
-  gdf ['title'] = ["%s<br>Score: %s" % (html_geo_thumb(gdf['name'][i]), gdf['score'][i]) for i in range(len(gdf))]
+  gdf['title'] = ["%s<br>Score: %s" % (html_geo_thumb(gdf['name'][i]), gdf['score'][i]) for i in range(len(gdf))]
 
   # create a list of our conditions
   conditions = [
-    (gdf ['score'] <= 9),
-    (gdf ['score'] > 9) & (gdf ['score'] <= 19),
-    (gdf ['score'] > 19) & (gdf ['score'] <= 29),
-    (gdf ['score'] > 29) & (gdf ['score'] <= 39),
-    (gdf ['score'] >= 40)
+    (gdf['score'] <= 9),
+    (gdf['score'] > 9) & (gdf['score'] <= 19),
+    (gdf['score'] > 19) & (gdf['score'] <= 29),
+    (gdf['score'] > 29) & (gdf['score'] <= 39),
+    (gdf['score'] >= 40)
     ]
 
   # list of the values we want to assign for each condition
-  values = [v['label'] for v in config_data['legend']]
+  legend_labels = [v['label'] for v in config_data['legend']]
+  legend_values = [ix for ix in range(0, len(config_data['legend']))]
 
   # set the category frame based on conditions and values above
-  gdf['category'] = np.select(conditions, values)
-  print(gdf['category']); exit()
+  gdf['category'] = np.select(conditions, legend_values)
+  gdf['label'] = np.select(conditions, legend_labels)
 
   #########
   # Transformation of original json to create styled geojson
   ########
 
   ### Unique categories from DataFrame
-  categories = values
-  # TO DO: 'category' instead of 'type'
-
-  ### TO DO: consider using default_dict or custom_styles for styling
+  ### TODO: consider using default_dict or custom_styles for styling
   d = getting_dictionary('template/output/custom_dict.txt')
   d = d[:5]
 
   ### Fill style values to the corresponding columns according to category
-  masks = [gdf['category'] == cat for cat in categories]
+  masks = [gdf['category'] == cat for cat in legend_values]
   for k in d[0].keys():
     vals = [l[k] for l in d]
     gdf[k] = np.select(masks, vals, default=np.nan)

@@ -35,6 +35,9 @@ sources:
         url: "https://streewise.space"
         title: "Streetwise"
     -
+        url: "https://mapillary.com"
+        title: "Bilder: Mapillary CC-BY-SA"
+    -
         url: "https://www.openstreetmap.org/copyright"
         title: "Karte: Mapbox, © OpenStreetMap"
 resources:
