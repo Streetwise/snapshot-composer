@@ -8,14 +8,17 @@ def bounds_to_set(bounds):
   if bounds[0].startswith('geo:'):
     btl = bounds[0].strip('geo:').split(',')
     bbr = bounds[1].strip('geo:').split(',')
-    return (
+    bounds = [
       float(btl[0].strip()),
       float(btl[1].strip()),
       float(bbr[0].strip()),
       float(bbr[1].strip()),
-    )
-  else:
-    return set(bounds)
+    ]
+    if bounds[0] > bounds[2]:
+      bounds[0], bounds[2] = bounds[2], bounds[0]
+    if bounds[1] > bounds[3]:
+      bounds[1], bounds[3] = bounds[3], bounds[1]
+  return tuple(bounds)
 
 def set_to_bounds(bounds):
   if bounds is None: return []

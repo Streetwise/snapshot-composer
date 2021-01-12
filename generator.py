@@ -44,7 +44,7 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
 
   if 'reduce_density' in location:
     if not isinstance(location['reduce_density'], int):
-      print("Setting density reduction to 2")
+      print("Reducing density by default to one half")
       location['reduce_density'] = 2
     # Optimizes the GeoJSON, returns a new (temporary) filename
     geodata = points_reduce(geodata, location['reduce_density'])
@@ -100,25 +100,9 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
     vals = [l[k] for l in d]
     gdf[k] = np.select(masks, vals, default=np.nan)
 
+  ### Write styled GeoJSON to file
   gdf.to_file("output/%s/preview.geojson" % name, driver='GeoJSON')
   #####
-
-
-  ### Boundary settings
-
-  # Check viewport settings
-  if 'viewport' in location and location['viewport']:
-    bbox = bounds_to_set(location['viewport'])
-    print('Using preset viewport')
-
-  # Calculate viewport
-  if bbox is None:
-    minx, miny, maxx, maxy = gdf.geometry.total_bounds
-    bbox = [minx, miny, maxx, maxy]
-    print('Calculated geometry bounds', bbox)
-
-  # Convert to geo: format
-  bbox = set_to_bounds(bbox)
 
   ### Boundary settings
 
@@ -127,7 +111,7 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
     bbox = bounds_to_set(location['viewport'])
     print('Using preset viewport')
 
-  # Calculate viewport
+  # Calculate viewport if it is missing
   if bbox is None:
     minx, miny, maxx, maxy = gdf.geometry.total_bounds
     bbox = [minx, miny, maxx, maxy]
@@ -146,5 +130,4 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
      feed = json.load(l)
      data['views'][0]['spec']['bounds'] = bbox
      data['resources'][0]['data']['features'] = feed['features']
-     data['views'][0]['spec']['bounds'] = bbox
      json.dump(data, r)
