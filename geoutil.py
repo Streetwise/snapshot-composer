@@ -5,7 +5,7 @@ def bounds_to_set(bounds):
   if not isinstance(bounds, list):
     print('Unknown boundary format, ignoring')
     return None
-  if bounds[0].startswith('geo:'):
+  if isinstance(bounds[0], str) and bounds[0].startswith('geo:'):
     btl = bounds[0].strip('geo:').split(',')
     bbr = bounds[1].strip('geo:').split(',')
     bounds = [
@@ -14,10 +14,14 @@ def bounds_to_set(bounds):
       float(bbr[0].strip()),
       float(bbr[1].strip()),
     ]
-    if bounds[0] > bounds[2]:
-      bounds[0], bounds[2] = bounds[2], bounds[0]
-    if bounds[1] > bounds[3]:
-      bounds[1], bounds[3] = bounds[3], bounds[1]
+  # Thorben: "Safest bet currently: lower left, upper right corner notation."
+  if bounds[0] > bounds[1]:
+    bounds[0], bounds[1] = bounds[1], bounds[0]
+    bounds[2], bounds[3] = bounds[3], bounds[2]
+  if bounds[0] > bounds[2]:
+    bounds[0], bounds[2] = bounds[2], bounds[0]
+  if bounds[1] > bounds[3]:
+    bounds[1], bounds[3] = bounds[3], bounds[1]
   return tuple(bounds)
 
 def set_to_bounds(bounds):
