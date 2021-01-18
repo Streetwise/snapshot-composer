@@ -10,49 +10,64 @@ legend: [{'label': 'Wahrgenommene Sicherheit tief', 'size': 3.0, 'shape': 'circl
 locations:
   - name: badzurzach
     geodata: safety_scores/badzurzach.json
-    reduce_density: 10
+    reduce_density: 1
+    bounds: ["geo:8.26985,47.61046", "geo:8.31733,47.56982"]
   - name: bergdietikon
     geodata: safety_scores/bergdietikon.json
-    reduce_density: 10
+    reduce_density: 1
+    bounds: ["geo:8.35687,47.40455", "geo:8.40037,47.37074"]
   - name: beringen
     geodata: safety_scores/beringen.json
-    reduce_density: 1000
+    reduce_density: 1
   - name: beromuenster
     geodata: safety_scores/beromuenster.json
-    reduce_density: 10
+    reduce_density: 1
+    bounds: [47.23511, 8.13486, 47.15620, 8.23537]
   - name: ebikon
     geodata: safety_scores/ebikon.json
-    reduce_density: 10
+    reduce_density: 1
+    bounds: [47.06203, 8.29058, 47.09544, 8.36645]
   - name: ermatingen
     geodata: safety_scores/ermatingen.json
-    reduce_density: 10
+    reduce_density: 1
+    bounds: [47.67500, 9.06125, 47.63641, 9.11783]
   - name: frauenfeld
     geodata: safety_scores/frauenfeld.json
-    reduce_density: 10
+    reduce_density: 1
+    bounds: [47.57643, 8.84275, 47.53004, 8.94114]
   - name: ingenbohl
     geodata: safety_scores/ingenbohl.json
-    reduce_density: 10
+    reduce_density: 1
+    bounds: [47.01554, 8.55158, 46.98406, 8.63966]
   - name: kloten
     geodata: safety_scores/kloten.json
-    reduce_density: 10
+    reduce_density: 1
+    bounds: [47.47638, 8.55088, 47.44011, 8.61707]
   - name: luzern
     geodata: safety_scores/luzern.json
-    reduce_density: 10
+    reduce_density: 4
+    bounds: [47.07097, 8.25517, 47.03082, 8.35455]
   - name: ruemlang
     geodata: safety_scores/ruemlang.json
-    reduce_density: 10
+    reduce_density: 1
+    bounds: [47.46306, 8.50364, 47.43118, 8.55590]
   - name: sursee
     geodata: safety_scores/sursee.json
-    reduce_density: 10
+    reduce_density: 1
+    bounds: [47.19255, 8.08673, 47.16469, 8.12952]
   - name: walchwil
     geodata: safety_scores/walchwil.json
-    reduce_density: 10
+    reduce_density: 1
+    bounds: [47.12784, 8.49513, 47.09193, 8.56371]
   - name: wattwil
     geodata: safety_scores/wattwil.json
-    reduce_density: 10
+    reduce_density: 1
+    bounds: [47.32754, 9.02832, 47.26558, 9.14648]
   - name: zug
     geodata: safety_scores/zug.json
-    reduce_density: 10
+    reduce_density: 1
+    bounds: [47.18972, 8.47630, 47.11634, 8.55157]
   - name: zurich
     geodata: safety_scores/zurich.json
-    reduce_density: 1000
+    reduce_density: 20
+    bounds: [47.41977, 8.46222, 47.33589, 8.61728]

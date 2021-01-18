@@ -34,6 +34,7 @@ def set_to_bounds(bounds):
 def points_reduce(filename, factor=2):
   data = gpd.read_file(filename)
   newgp = data.copy().iloc[::factor, :]
+  print('Original: %d - Reduced: %d' % (len(data), len(newgp)))
   newgp.reindex()
   newfile = "output/temp.reduced.geojson"
   print('Writing 1/%d reduced data to' % factor, newfile)
