@@ -10,27 +10,27 @@ legend: [{'label': 'Wahrgenommene Sicherheit tief', 'size': 3.0, 'shape': 'circl
 locations:
   - name: kloten
     geodata: safety_scores/kloten.json
-    reduce_density: 1
+    reduce_density: 5
     bounds: [47.47638, 8.55088, 47.44011, 8.61707]
   - name: zurich
     geodata: safety_scores/zurich.json
-    reduce_density: 20
+    reduce_density: 60
     bounds: [47.41977, 8.46222, 47.33589, 8.61728]
   - name: bergdietikon
     geodata: safety_scores/bergdietikon.json
-    reduce_density: 1
+    reduce_density: 2
     bounds: ["geo:8.35687,47.40455", "geo:8.40037,47.37074"]
   - name: ebikon
     geodata: safety_scores/ebikon.json
-    reduce_density: 1
+    reduce_density: 4
     bounds: [47.06203, 8.29058, 47.09544, 8.36645]
   - name: luzern
     geodata: safety_scores/luzern.json
-    reduce_density: 2
+    reduce_density: 1
     bounds: [47.07097, 8.25517, 47.03082, 8.35455]
   - name: zug
     geodata: safety_scores/zug.json
-    reduce_density: 1
+    reduce_density: 10
     bounds: [47.18972, 8.47630, 47.11634, 8.55157]
   - name: sursee
     geodata: safety_scores/sursee.json
@@ -38,11 +38,11 @@ locations:
     bounds: [47.19255, 8.08673, 47.16469, 8.12952]
   - name: wattwil
     geodata: safety_scores/wattwil.json
-    reduce_density: 1
+    reduce_density: 3
     bounds: [47.33484, 9.02139, 47.25190, 9.14683]
   - name: frauenfeld
     geodata: safety_scores/frauenfeld.json
-    reduce_density: 1
+    reduce_density: 14
     bounds: [47.57643, 8.84275, 47.53004, 8.94114]
   - name: ruemlang
     geodata: safety_scores/ruemlang.json
@@ -62,5 +62,5 @@ locations:
     bounds: [47.23511, 8.13486, 47.15620, 8.23537]
   - name: ingenbohl
     geodata: safety_scores/ingenbohl.json
-    reduce_density: 1
+    reduce_density: 3
     bounds: [47.01554, 8.55158, 46.98406, 8.63966]
