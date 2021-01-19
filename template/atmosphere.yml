@@ -26,7 +26,7 @@ locations:
     bounds: [47.06203, 8.29058, 47.09544, 8.36645]
   - name: luzern
     geodata: atmos_scores/luzern.json
-    reduce_density: 1
+    reduce_density: 10
     bounds: [47.07097, 8.25517, 47.03082, 8.35455]
   - name: zug
     geodata: atmos_scores/zug.json
