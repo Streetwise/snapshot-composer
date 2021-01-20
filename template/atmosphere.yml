@@ -1,6 +1,6 @@
 # INPUT file
 name: "Streetwise: Atmosphere"
-title: "Streetwise Score Atmosphäre"
+title: "Streetwise Atmosphäre"
 description: "Die Bewertung («Score») basiert auf Bilddaten aus Mapillary und der durch Crowdsourcing untersuchten visuellen Wahrnehmung öffentlicher Räume im Hinblick auf Atmosphäre («wo würdest du dich lieber aufhalten?»). Der jeweilige Aufenthaltsort wird…"
 is_showcase: "false"
 keywords: ["Streetwise", "Atmosphere", "Urban" ]

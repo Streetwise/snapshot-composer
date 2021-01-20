@@ -1,20 +1,20 @@
 # INPUT file
 name: "Streetwise: Safety"
-title: "Streetwise Score Sicherheit"
+title: "Streetwise Sicherheit"
 description: "Die Bewertung («Score») basiert auf Bilddaten aus Mapillary und der durch Crowdsourcing untersuchten visuellen Wahrnehmung öffentlicher Räume im Hinblick auf Sicherheit («wo fühlst du dich sicherer?»)."
 is_showcase: "false"
 keywords: ["Streetwise", "Safety", "Urban" ]
 maintainers_web_github: "https://github.com/streetwise"
 maintainers_name: "IVO / MKZ"
-legend: [{'label': 'Wahrgenommene Sicherheit tief', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': '-', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': '0', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': '+', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Wahrgenommene Sicherheit hoch', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
+legend: [{'label': 'wahrgenommene Sicherheit tief', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': '-', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': '0', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': '+', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'wahrgenommene Sicherheit hoch', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
 locations:
   - name: kloten
     geodata: safety_scores/kloten.json
-    reduce_density: 5
+    reduce_density: 4
     bounds: [47.47638, 8.55088, 47.44011, 8.61707]
   - name: zurich
     geodata: safety_scores/zurich.json
-    reduce_density: 60
+    reduce_density: 100
     bounds: [47.41977, 8.46222, 47.33589, 8.61728]
   - name: bergdietikon
     geodata: safety_scores/bergdietikon.json
@@ -26,11 +26,11 @@ locations:
     bounds: [47.06203, 8.29058, 47.09544, 8.36645]
   - name: luzern
     geodata: safety_scores/luzern.json
-    reduce_density: 10
+    reduce_density: 1
     bounds: [47.07097, 8.25517, 47.03082, 8.35455]
   - name: zug
     geodata: safety_scores/zug.json
-    reduce_density: 10
+    reduce_density: 8
     bounds: [47.18972, 8.47630, 47.11634, 8.55157]
   - name: sursee
     geodata: safety_scores/sursee.json
@@ -38,7 +38,7 @@ locations:
     bounds: [47.19255, 8.08673, 47.16469, 8.12952]
   - name: wattwil
     geodata: safety_scores/wattwil.json
-    reduce_density: 3
+    reduce_density: 2
     bounds: [47.33484, 9.02139, 47.25190, 9.14683]
   - name: frauenfeld
     geodata: safety_scores/frauenfeld.json
@@ -62,5 +62,5 @@ locations:
     bounds: [47.23511, 8.13486, 47.15620, 8.23537]
   - name: ingenbohl
     geodata: safety_scores/ingenbohl.json
-    reduce_density: 3
+    reduce_density: 2
     bounds: [47.01554, 8.55158, 46.98406, 8.63966]

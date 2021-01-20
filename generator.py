@@ -66,7 +66,7 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
   gdf['score'].mask(gdf['score'] < 0, 0, inplace=True)
   gdf['score'].mask(gdf['score'] > 50, 50, inplace=True)
 
-  gdf['title'] = ["%s<br>Score: %s" % (html_geo_thumb(gdf['name'][i]), gdf['score'][i]) for i in range(len(gdf))]
+  gdf['title'] = ["%s<br>Streetwise Score: %s" % (html_geo_thumb(gdf['name'][i]), gdf['score'][i]) for i in range(len(gdf))]
 
   # create a list of our conditions
   conditions = [
