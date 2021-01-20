@@ -54,7 +54,7 @@ locations:
     bounds: [47.12784, 8.49513, 47.09193, 8.56371]
   - name: beringen
     geodata: atmos_scores/beringen.json
-    reduce_density: 1
+    reduce_density: 2
     bounds: ["geo:8.53383,47.73113", "geo:8.60738,47.66889"]
   - name: beromuenster
     geodata: atmos_scores/beromuenster.json
