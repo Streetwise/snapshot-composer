@@ -33,8 +33,14 @@ def translate_marker(legend):
             if k == 'label':
                 custom_styles[idx]= (dict(label=v))
             elif k == 'fillColor':
-                custom_styles[idx].update(fill='true', fillColor=v, scale=0.5)
+                custom_styles[idx].update(fill='true')
                 custom_styles[idx]['marker-color'] = v
+                custom_styles[idx]['marker-size'] = "small"
+                custom_styles[idx]['stroke-width'] = 0
+                custom_styles[idx]['stroke-opacity'] = 0
+                custom_styles[idx]['fill-opacity'] = 0.3
+                # custom_styles[idx]['marker-symbol'] = "square"
+                # custom_styles[idx]['bubblingMouseEvents'] = 'false'
             elif k == 'fillOpacity':
                custom_styles[idx].update(fillOpacity=v)
             elif k == 'strokeColor':
