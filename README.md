@@ -60,7 +60,13 @@ And run the main script, providing the filename of the template as input:
 $ python main.py template/safety.yml
 ```
 
-If you have any questions, contact the Cividi team.
+There is also a Makefile provided for convenience, so that updates could be run in such a way:
+
+```
+$ make clean safety
+```
+
+If you have any questions, please contact the Cividi team.
 
 ## License
 
