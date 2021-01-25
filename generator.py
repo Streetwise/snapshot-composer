@@ -5,7 +5,7 @@ import geopandas as gpd
 import pandas as pd
 import numpy as np
 
-from util import legend_reader, translate_marker, getting_dictionary
+from maputil import legend_reader, translate_marker, getting_dictionary
 from geoutil import points_reduce, bounds_to_set, set_to_bounds, html_geo_thumb
 
 def generateDataPackage(output_from_parsed_template, location, config_data):

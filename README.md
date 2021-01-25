@@ -1,18 +1,45 @@
-##### Streetwise snapshots builder for Gemeindescan
+Snapshot composer
+---
 
-This script prepares Data Packages for upload to Gemeindescan (as "Snapshots").
+This collection of scripts prepares Data Packages (in the "Snapshots" format) for upload to the [Gemeindescan Web platform](https://github.com/cividi/spatial-data-package-platform/issues). Currently it is being used to publish the analytical results of the [Streetwise](https://github.com/streetwise) project for a number of municipalities, as detailed on the website https://streetwise.space
 
-It expects a `data` folder with sources specified by a template in YAML.
+This repository has a `data` submodule with input sources specified by a template in YAML. Therefore make sure you check out the complete sources:
 
-The file input YAML file (.yml) needs to be filled, regarding metadata information and style.
+```
+git clone https://github.com/Streetwise/snapshot-composer.git
+cd snapshot-composer
+git submodule update --init
+```
+
+## Usage notes
+
+An input template YAML file (`template/*.yml`) specifies the metadata for each municipality we are publishing, as well as general style configurations for the legend and other content displayed.
+
+For example, for the Safety campaign in Zürich the configuration looks like this:
+
+```
+- name: zurich
+  geodata: safety_scores/zurich.json
+  reduce_density: 100
+  bounds: [47.41977, 8.46222, 47.33589, 8.61728]
+```
+
+- The **name** will specify the output filename and ID, displayed names and link to municipal IDs are currently configured by the user while uploading.
+- Provide valid GeoJSON as **geodata**
+- To improve performance use **reduce_density** to scale down the number of data points by a factor.
+- To set the viewpoint and crop any outlier data points, use the **bounds** variable.
+
+The `template/template.txt` file contains additional standard parameters, such as the license, to build the rest of the Data Package.
+
+For configuration of the point rendering style, see `maputil.py`. For code that provides geographic transformation, see `geoutil.py`.
 
 ## Installation
 
 The script depends on [GDAL](https://gdal.org/) which you would best install using your system packager, e.g. `yum install gdal-devel`
 
-pyproj may also be required, installable via `python3-pyproj`
+PyPROJ may also be required, installable via `python3-pyproj`
 
-To use the builder, install the environment with [Pipenv](https://pipenv.pypa.io/en/latest/):
+Install the rest of the environment with [Pipenv](https://pipenv.pypa.io/en/latest/):
 
 ```
 pipenv --site-packages install
@@ -27,28 +54,14 @@ pyvenv .env --system-site-packages
 pip install -r requirements.txt
 ```
 
-And run the main script, providing the filename of the input:
+And run the main script, providing the filename of the template as input:
 
 ```
 $ python main.py template/safety.yml
 ```
 
-## Sample configuration
+If you have any questions, contact the Cividi team.
 
-Here is an example configuration for a Zürich dataset:
+## License
 
-```yaml
-name: "Streetwise: Safety"
-title: "Safety scores"
-description: "Relative visual perception of urban spaces"
-is_showcase: "false"
-keywords: ["Streetwise", "Safety", "Urban" ]
-maintainers_web_github: "https://github.com/streetwise"
-maintainers_name: "Streetwise team"
-legend: [{'label': 'Unsafe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Neutral', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'Safe', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
-locations:
-  - name: zurich
-    geodata: zurich_test.geojson
-    bounds: ["geo:45.15, 5.967", "geo:52.883, 12.467"]
-    reduce_density: 2
-```
+[MIT License](LICENSE)

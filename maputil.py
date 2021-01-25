@@ -34,12 +34,13 @@ def translate_marker(legend):
                 custom_styles[idx]= (dict(label=v))
             elif k == 'fillColor':
                 custom_styles[idx].update(fill='true')
+                # https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0
                 custom_styles[idx]['marker-color'] = v
                 custom_styles[idx]['marker-size'] = "small"
                 custom_styles[idx]['stroke-width'] = 0
                 custom_styles[idx]['stroke-opacity'] = 0
                 custom_styles[idx]['fill-opacity'] = 0.3
-                # custom_styles[idx]['marker-symbol'] = "square"
+                # custom_styles[idx]['marker-symbol'] = "square" # https://labs.mapbox.com/maki-icons/
                 # custom_styles[idx]['bubblingMouseEvents'] = 'false'
             elif k == 'fillOpacity':
                custom_styles[idx].update(fillOpacity=v)
