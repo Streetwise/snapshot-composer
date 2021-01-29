@@ -7,48 +7,36 @@ def legend_reader(path):
         legend = document['views'][0]['spec']['legend']
     return legend
 
-def translate(legend):
+
+def translate_marker(legend, as_circle=False):
     custom_styles = [0 for x in range(len(legend))]
     for idx, leg in enumerate(legend):
         for k, v in leg.items():
+            if not isinstance(custom_styles[idx], dict):
+                custom_styles[idx] = dict()
             if k == 'label':
-                custom_styles[idx]= (dict(label=v))
-            elif k == 'fillColor':
-                custom_styles[idx].update(fill='true', fillColor=v)
-            elif k == 'fillOpacity':
-               custom_styles[idx].update(fillOpacity=v)
-            elif k == 'strokeColor':
-               custom_styles[idx].update(stroke='true', strokeColor=v)
-            elif k == 'strokeWidth':
-               custom_styles[idx].update(weight=v)
-            elif k == 'size':
-                custom_styles[idx].update(radius=v)
-
-    return custom_styles
-
-def translate_marker(legend):
-    custom_styles = [0 for x in range(len(legend))]
-    for idx, leg in enumerate(legend):
-        for k, v in leg.items():
-            if k == 'label':
-                custom_styles[idx]= (dict(label=v))
+                custom_styles[idx].update(label=v)
             elif k == 'fillColor':
                 custom_styles[idx].update(fill='true')
-                # https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0
-                custom_styles[idx]['marker-color'] = v
-                custom_styles[idx]['marker-size'] = "small"
-                custom_styles[idx]['stroke-width'] = 0
-                custom_styles[idx]['stroke-opacity'] = 0
-                custom_styles[idx]['fill-opacity'] = 0.3
-                # custom_styles[idx]['marker-symbol'] = "square" # https://labs.mapbox.com/maki-icons/
-                # custom_styles[idx]['bubblingMouseEvents'] = 'false'
-            elif k == 'fillOpacity':
-               custom_styles[idx].update(fillOpacity=v)
-            elif k == 'strokeColor':
-               custom_styles[idx].update(stroke='true', strokeColor=v)
+                if not as_circle:
+                    # https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0
+                    custom_styles[idx]['marker-color'] = v
+                    custom_styles[idx]['marker-size'] = "small"
+                    # custom_styles[idx]['marker-symbol'] = "square" # https://labs.mapbox.com/maki-icons/
+                    custom_styles[idx]['stroke-width'] = 0
+                    custom_styles[idx]['stroke-opacity'] = 0
+                else:
+                    custom_styles[idx]['color'] = v
+                    custom_styles[idx]['fillColor'] = v
+                    custom_styles[idx]['fill-opacity'] = 0.3
+                    custom_styles[idx]['radius'] = "30.0"
+                    custom_styles[idx]['bubblingMouseEvents'] = "true"
+            elif k == 'fillOpacity' and as_circle:
+                custom_styles[idx].update(fillOpacity=v)
+            elif k == 'strokeColor' and as_circle:
+                custom_styles[idx].update(stroke='true', strokeColor=v)
 
     return custom_styles
-
 
 
 def getting_dictionary(path):

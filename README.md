@@ -29,7 +29,9 @@ For example, for the Safety campaign in Zürich the configuration looks like thi
 - To improve performance use **reduce_density** to scale down the number of data points by a factor.
 - To set the viewpoint and crop any outlier data points, use the **bounds** variable.
 
-The `template/template.txt` file contains additional standard parameters, such as the license, to build the rest of the Data Package.
+The `template/template.txt` file contains additional standard parameters, such as the license, to build the rest of the Data Package. We follow Mapbox [SimpleStyles](https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0) to render circles or markers.
+
+To enable circle rendering, set `as_circle: 1` in the top part of the YML file.
 
 For configuration of the point rendering style, see `maputil.py`. For code that provides geographic transformation, see `geoutil.py`.
 

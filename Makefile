@@ -6,6 +6,11 @@ clean:
 tidy:
 	rm output/temp*
 
+test:
+	# Not (yet) a test runner!
+	mkdir -p output
+	python main.py template/test.yml
+
 safety:
 	mkdir -p output
 	python main.py template/safety.yml

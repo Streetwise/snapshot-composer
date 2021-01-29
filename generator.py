@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 
 from maputil import (
-  legend_reader, translate_fill, translate_marker, getting_dictionary
+  legend_reader, translate_marker, getting_dictionary
 )
 from geoutil import (
   points_reduce, bounds_to_set, set_to_bounds, html_geo_thumb
@@ -36,14 +36,10 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
 
   default_dict = getting_dictionary('template/default_dict.txt')
   dpp_legend = legend_reader('output/temp.datapackage.json')
-  if 'with_markers' in config_data:
-    # If we are using markers
-    print("Using marker styles")
-    custom_styles = translate_marker(dpp_legend)
+  if 'as_circle' in config_data:
+    custom_styles = translate_marker(dpp_legend, True)
   else:
-    # If we are using filled circles
-    print("Using fill styles")
-    custom_styles = translate_fill(dpp_legend)
+    custom_styles = translate_marker(dpp_legend)
 
   # Prepare style dictionary
   custom_dict = []
@@ -96,6 +92,10 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
   legend_values = [ix for ix in range(0, len(config_data['legend']))]
 
   # set the category frame based on conditions and values above
+  if len(conditions) != len(legend_values):
+    print("Mismatch in data (%d) and legend (%d) value steps!" %
+      (len(conditions), len(legend_values)))
+    exit()
   gdf['category'] = np.select(conditions, legend_values)
   gdf['label'] = np.select(conditions, legend_labels)
 
@@ -144,4 +144,6 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
      feed = json.load(l)
      data['views'][0]['spec']['bounds'] = bbox
      data['resources'][0]['data']['features'] = feed['features']
+     if 'as_circle' in config_data:
+       data['resources'][0]['mediatype'] = "application/vnd.simplestyle-extended"
      json.dump(data, r)
