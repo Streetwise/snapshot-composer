@@ -2,7 +2,6 @@ default: safety atmosphere tidy
 
 clean:
 	rm -rf output/*
-	rm template/output/*
 
 tidy:
 	rm output/temp*

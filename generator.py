@@ -5,8 +5,12 @@ import geopandas as gpd
 import pandas as pd
 import numpy as np
 
-from maputil import legend_reader, translate_marker, getting_dictionary
-from geoutil import points_reduce, bounds_to_set, set_to_bounds, html_geo_thumb
+from maputil import (
+  legend_reader, translate_fill, translate_marker, getting_dictionary
+)
+from geoutil import (
+  points_reduce, bounds_to_set, set_to_bounds, html_geo_thumb
+)
 
 def generateDataPackage(output_from_parsed_template, location, config_data):
   name = location['name']
@@ -31,11 +35,21 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
   ##########
 
   default_dict = getting_dictionary('template/default_dict.txt')
-  custom_styles = translate_marker(legend_reader('output/temp.datapackage.json'))
+  dpp_legend = legend_reader('output/temp.datapackage.json')
+  if 'with_markers' in config_data:
+    # If we are using markers
+    print("Using marker styles")
+    custom_styles = translate_marker(dpp_legend)
+  else:
+    # If we are using filled circles
+    print("Using fill styles")
+    custom_styles = translate_fill(dpp_legend)
+
+  # Prepare style dictionary
   custom_dict = []
   for i in range(len(custom_styles)):
     custom_dict.append({**default_dict[i], **custom_styles[i]})
-  with open('template/output/custom_dict.txt', 'w') as custom:
+  with open('output/temp.custom_dict.txt', 'w') as custom:
     custom.write(str(custom_dict))
 
   #########
@@ -91,7 +105,7 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
 
   ### Unique categories from DataFrame
   ### TODO: consider using default_dict or custom_styles for styling
-  d = getting_dictionary('template/output/custom_dict.txt')
+  d = getting_dictionary('output/temp.custom_dict.txt')
   d = d[:5]
 
   ### Fill style values to the corresponding columns according to category

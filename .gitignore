@@ -1,7 +1,6 @@
 /output/*
 /output*/*
 /data/*
-/template/output/*
 /streetwise/*
 streetwise
 __pycache__
