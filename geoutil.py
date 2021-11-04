@@ -42,8 +42,12 @@ def points_reduce(filename, factor=2):
   return newfile
 
 def html_geo_thumb(imgkey):
+  frame_url = "https://www.mapillary.com/embed?image_key=%s" % imgkey
+  # return \
+    # "<embed type='text/html'" + \
+    # " src='%s&style=photo'" % frame_url + \
+    # " height=200 width=300 frameborder=0 />" + \
   return \
-    ("<a target=\"_blank\" href=\"https://www.mapillary.com/map/im/%s\">" + \
-    "<img style=\"width:200px\" " + \
-    "src=\"https://images.mapillary.com/%s/thumb-320.jpg\"></a>") % \
-    (imgkey, imgkey)
+    "<a href='%s&style=classic'" % frame_url + \
+    " style='background:#eee;display:block;padding:1em'" + \
+    " target='mapillary'>Vorschau / Preview</a>"
