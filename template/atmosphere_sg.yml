@@ -1,0 +1,14 @@
+# INPUT file
+name: "Streetwise: Atmosphere"
+title: "Streetwise Atmosphäre"
+description: "Die Bewertung («Score») basiert auf Bilddaten aus Mapillary und der durch Crowdsourcing untersuchten visuellen Wahrnehmung öffentlicher Räume im Hinblick auf Atmosphäre («wo würdest du dich lieber aufhalten?»). Der jeweilige Aufenthaltsort wird…"
+is_showcase: "false"
+keywords: ["Streetwise", "Atmosphere", "Urban" ]
+maintainers_web_github: "https://github.com/streetwise"
+maintainers_name: "Datalets"
+legend: [{'label': 'als unbeliebt wahrgenommen', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f30000', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': '-', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#f97a00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': '0', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#ffff00', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': '+', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#82ff05', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}, {'label': 'als beliebt wahrgenommen', 'size': 3.0, 'shape': 'circle', 'primary': false, 'fillColor': '#05ff09', 'fillOpacity': 0.7, 'strokeColor': '#232323', 'strokeWidth': 1.0, 'strokeOpacity': 1.0}]
+locations:
+  - name: stgallen
+    geodata: safety_scores/stgallen.json
+    reduce_density: 1
+    bounds: [47.46, 9.29, 47.39, 9.44]
