@@ -1,5 +1,7 @@
 ##########
-import json, ast, yaml
+import json
+import ast
+import yaml
 
 import geopandas as gpd
 import pandas as pd
@@ -9,8 +11,9 @@ from maputil import (
   legend_reader, translate_marker, getting_dictionary
 )
 from geoutil import (
-  points_reduce, bounds_to_set, set_to_bounds, html_geo_thumb
+  points_reduce, bounds_to_set, set_to_bounds, html_geo_frame
 )
+
 
 def generateDataPackage(output_from_parsed_template, location, config_data):
   name = location['name']
@@ -23,11 +26,10 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
   # Convert yaml to json datapackeg.json(metadata)
 
   with open("output/%s/datapackage.yaml" % name, 'r') as yaml_in, \
-       open("output/temp.datapackage.json", "w") as json_out:
-    yaml_object = yaml.safe_load(yaml_in) # yaml_object will be a
-                                          #  list or a dict
+          open("output/temp.datapackage.json", "w") as json_out:
+    yaml_object = yaml.safe_load(yaml_in)  # yaml_object will be a
+    #  list or a dict
     json.dump(yaml_object, json_out)
-
 
   ##########
   # Translate legend to styles (used fo styled_geojson)
@@ -76,7 +78,10 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
   gdf['score'].mask(gdf['score'] < 0, 0, inplace=True)
   gdf['score'].mask(gdf['score'] > 50, 50, inplace=True)
 
-  gdf['description'] = ["%s<br>Streetwise Score: %s" % (html_geo_thumb(gdf['name'][i]), int(gdf['score'][i])) for i in range(len(gdf))]
+  gdf['description'] = [
+        html_geo_frame(gdf['name'][i], int(gdf['score'][i]))
+        for i in range(len(gdf))
+      ]
 
   # create a list of our conditions
   conditions = [
@@ -94,7 +99,7 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
   # set the category frame based on conditions and values above
   if len(conditions) != len(legend_values):
     print("Mismatch in data (%d) and legend (%d) value steps!" %
-      (len(conditions), len(legend_values)))
+          (len(conditions), len(legend_values)))
     exit()
   gdf['category'] = np.select(conditions, legend_values)
   gdf['label'] = np.select(conditions, legend_labels)
@@ -138,8 +143,8 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
 
   # Export engine, creates datapackage
   with open("output/temp.datapackage.json", 'r') as j, \
-       open("output/%s/preview.geojson" % name, 'r') as l, \
-       open("output/%s/datapackage.json" % name, 'w') as r:
+          open("output/%s/preview.geojson" % name, 'r') as l, \
+          open("output/%s/datapackage.json" % name, 'w') as r:
      data = json.load(j)
      feed = json.load(l)
      data['views'][0]['spec']['bounds'] = bbox
