@@ -33,7 +33,9 @@ def set_to_bounds(bounds):
     if len(bounds) < 4:
         raise Exception("Invalid bounds", bounds)
     print("setting", bounds)
-    return ['geo:%f,%f' % (bounds[1], bounds[0]), 'geo:%f,%f' % (bounds[3], bounds[2])]
+    return [
+        'geo:%f,%f' % (bounds[1], bounds[0]),
+        'geo:%f,%f' % (bounds[3], bounds[2])]
 
 
 def points_reduce(filename, factor=2):
@@ -48,14 +50,15 @@ def points_reduce(filename, factor=2):
 
 
 def html_geo_embed(imgkey):
-    frame_code = "<iframe style='width:100%;height:300px;border:0' " + \
-        "src='https://www.mapillary.com/embed?map_style=Mapillary%20streets" + \
+    frame_code = "<iframe style='width:100%%;height:300px;border:0' " + \
+        "src='https://www.mapillary.com/embed?" + \
+        "map_style=Mapillary%%20streets" + \
         "&image_key=%s&style=photo'></iframe>"
     return frame_code % imgkey
 
 
 def html_geo_thumb(imgkey):
-    frame_code = "<img width='100%' " + \
+    frame_code = "<img width='100%%' " + \
         "src='https://mapillary-proxy.vercel.app/thumb?key=%s' />"
     return frame_code % imgkey
 
@@ -64,8 +67,8 @@ def html_geo_frame(imgkey, score):
     frame_url = "https://www.mapillary.com/embed?image_key=%s" % imgkey
     return \
         "<a href='%s&style=classic'" % frame_url + \
-        " style='background:#eee;display:block;padding:1em'" + \
         " target='mapillary'>" + \
         html_geo_thumb(imgkey) + \
         "</a>" + \
-        "<br>Streetwise Score: <b>%s</b>" % score
+        "<div style='width:300px;text-align:center'>Streetwise Score: " + \
+        "<b>%s</b></div>" % score
