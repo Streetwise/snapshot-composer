@@ -3,6 +3,7 @@ import os
 import yaml
 import click
 
+
 @click.command()
 @click.argument('filename')
 def generator(filename):
@@ -12,13 +13,16 @@ def generator(filename):
 
     # Load input from user
     config_data = yaml.load(open(filename), Loader=yaml.FullLoader)
-    env = Environment(loader = FileSystemLoader('.'), trim_blocks=True, lstrip_blocks=True)
+    env = Environment(
+        loader=FileSystemLoader('.'),
+        trim_blocks=True, lstrip_blocks=True
+    )
 
     # Load template
     template = env.get_template('template/template.txt')
 
     # Render input to template
-    output_from_parsed_template=(template.render(config_data))
+    output_from_parsed_template = template.render(config_data)
 
     # Save generated .yaml file
     for location in config_data['locations']:

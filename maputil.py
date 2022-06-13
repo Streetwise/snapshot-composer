@@ -1,6 +1,7 @@
 import json
 import ast
 
+
 def legend_reader(path):
     with open(path, 'r') as legend:
         document = json.load(legend)
@@ -22,7 +23,8 @@ def translate_marker(legend, as_circle=False):
                     # https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0
                     custom_styles[idx]['marker-color'] = v
                     custom_styles[idx]['marker-size'] = "small"
-                    # custom_styles[idx]['marker-symbol'] = "square" # https://labs.mapbox.com/maki-icons/
+                    # https://labs.mapbox.com/maki-icons/
+                    # custom_styles[idx]['marker-symbol'] = "square"
                     custom_styles[idx]['stroke-width'] = 0
                     custom_styles[idx]['stroke-opacity'] = 0
                 else:
