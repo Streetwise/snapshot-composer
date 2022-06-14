@@ -40,6 +40,8 @@ def generateDataPackage(output_from_parsed_template, location, config_data):
         custom_styles = translate_marker(dpp_legend, True)
     else:
         custom_styles = translate_marker(dpp_legend)
+    if 'flip_legend' in config_data:
+        custom_styles.reverse()
 
     # Prepare style dictionary
     custom_dict = []
